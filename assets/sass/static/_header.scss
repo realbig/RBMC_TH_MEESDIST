@@ -3,31 +3,93 @@ The static site header.
 
 @since 0.1.0
 */
-
 @import "../settings";
 
 #site-header {
-  height: $header-height;
-  line-height: $header-height;
-
-  * {
-    height: inherit;
-    line-height: inherit;
-    color: inherit;
-  }
-
-  background: $primary-color;
-  color: $light-color;
 
   .top-nav {
-    float: left;
+    height: $header-height;
+    line-height: $header-height;
 
-    .top-nav-item {
-      display: inline-block;
+    * {
+      height: inherit;
+      line-height: inherit;
+      color: inherit;
+      text-transform: uppercase;
+      font-size: inherit;
+    }
+
+    background: $primary-color;
+    color: $light-color;
+//    font-size: 0.8em;
+
+    .fa {
+      font-size: 1.4em;
+    }
+
+    .top-nav {
+      float: left;
+
+      .top-nav-item {
+        display: inline-block;
+        margin-right: 1em;
+      }
+    }
+
+    .search-form {
+      float: left;
+      margin-right: 1em;
+
+      input[type="search"] {
+        height: $header-height - 10px;
+        line-height: $header-height - 10px;
+        margin-top: 5px;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .fa-search {
+        color: $medium-color;
+      }
     }
   }
 
-  .search-form {
-    float: left;
+  .site-logo {
+    margin: $gutter 0;
+
+    > .container {
+      display: inline-block;
+    }
+
+    .site-title {
+      font-size: 4em;
+      border-bottom: 1px solid $primary-color;
+    }
+
+    .site-description {
+      position: relative;
+      top: -1.5em;
+      display: inline-block;
+      text-transform: uppercase;
+      background: $body-bg;
+      color: $primary-color;
+      font-size: 0.9em;
+    }
+  }
+
+  .site-nav {
+    background: $secondary-color;
+
+    .menu-item {
+      float: left;
+      text-align: center;
+      font-size: 1.3em;
+      text-transform: uppercase;
+      color: $light-color;
+
+      a {
+        color: inherit;
+      }
+    }
   }
 }

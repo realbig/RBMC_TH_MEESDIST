@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 	<!--[if lt IE 9]>
-	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/vendor/js/html5.js"></script>
+	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/vendor/js/nomin/html5.js"></script>
 	<![endif]-->
 
 	<?php wp_head(); ?>
@@ -34,33 +34,62 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<header id="site-header">
 
-		<div class="row">
+		<div class="top-nav">
 
-			<div class="columns small-12">
+			<div class="row">
 
-				<div class="left">
-					<?php get_search_form(); ?>
+				<div class="columns small-12">
 
-					<ul class="top-nav">
-						<li class="top-nav-item">
-							<span class="fa fa-home"></span> Home
-						</li>
-						<li class="top-nav-item">
-							<span class="fa fa-location-arrow"></span> Locations
-						</li>
-						<li class="top-nav-item">
-							<span class="fa fa-download"></span> Trade
-						</li>
-					</ul>
-				</div>
+					<div class="left">
+						<?php get_search_form(); ?>
 
-				<div class="right">
-					<a href="/blog/">Blog</a>
-					<?php dynamic_sidebar( 'header' ); ?>
+						<ul class="top-nav">
+							<li class="top-nav-item">
+								<span class="fa fa-home"></span> Home
+							</li>
+							<li class="top-nav-item">
+								<span class="fa fa-location-arrow"></span> Locations
+							</li>
+							<li class="top-nav-item">
+								<span class="fa fa-download"></span> Trade
+							</li>
+						</ul>
+					</div>
+
+					<div class="right">
+						<a href="/blog/">Blog</a>
+						<?php dynamic_sidebar( 'header' ); ?>
+					</div>
+
 				</div>
 
 			</div>
 
 		</div>
+
+		<div class="site-logo text-center">
+			<div class="container">
+				<h1 class="site-title"><?php bloginfo( 'title' ); ?></h1>
+				<p class="site-description"><?php bloginfo( 'description' ); ?></p>
+			</div>
+		</div>
+
+		<nav class="site-nav row">
+			<div class="columns small-12">
+				<?php
+				global $_meesdist_primary_nav_count;
+				$primary_nav             = wp_get_nav_menu_object( 'primary' );
+				$_meesdist_primary_nav_count = $primary_nav->count;
+
+				require_once __DIR__ . '/includes/primary-nav-walker.php';
+
+				wp_nav_menu( array(
+					'theme_location' => 'primary',
+					'container'      => false,
+					'walker'         => new MeesDist_Walker_PrimaryNav,
+				) );
+				?>
+			</div>
+		</nav>
 
 	</header>

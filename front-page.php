@@ -14,7 +14,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-<!-- Home HTML -->
+<section class="home-slides row collapse">
+	<div class="columns small-12">
+		<?php include __DIR__ . '/includes/partials/slides.php'; ?>
+	</div>
+</section>
 
+<section class="page-content row collapse">
+
+	<div class="columns small-12">
+
+		<?php the_content(); ?>
+
+	</div>
+
+</section>
 <?php
 get_footer();

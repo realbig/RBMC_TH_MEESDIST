@@ -79,8 +79,8 @@ module.exports = function (grunt) {
                         'assets/vendor/js/jquery.cookie.js',
                         'assets/vendor/js/foundation/foundation.js',
 
-                        // Included dynamically in header.php
-                        '!assets/vendor/js/html5.js',
+                        // Dynamic files
+                        '!assets/vendor/js/nomin/*.js',
 
                         // Theme scripts
                         'assets/js/*.js'

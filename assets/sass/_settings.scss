@@ -20,19 +20,26 @@ $dark-color: #333;
 $medium-color: $secondary-color;
 $light-color: #fff;
 
+$body-bg: #fff;
+
 // We use these to define default font stacks
-$font-family-sans-serif: "Helvetica", sans-serif;
+$font-family-sans-serif: "Franklin Gothic", "Helvetica", sans-serif;
 $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 $body-font-color: #222;
 
+$base-font-size: 14px;
+$rem-base: $base-font-size;
+
 // Sizes
 $gutter: 30px;
 $column-gutter: rem-calc(30);
-$header-height: $gutter;
+$header-height: 40px;
+$block-grid-default-spacing: rem-calc(20);
 
 // We use these to control header font styles
-$header-font-family: $font-family-sans-serif;
+$header-font-family: "Wisdom Script", cursive;
+$header-font-color: $primary-color;
 $header-line-height: 1.4;
 $header-top-margin: .2rem;
 $header-bottom-margin: .5rem;

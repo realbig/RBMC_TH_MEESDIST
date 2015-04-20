@@ -5,3 +5,18 @@ Searchform.
 */
 
 @import "../settings";
+
+.search-form {
+  position: relative;
+
+  .fa-search {
+    position: absolute;
+    left: 5px;
+    top: 0;
+    color: $medium-color;
+  }
+
+  input[type="search"] {
+    padding-left: 25px;
+  }
+}

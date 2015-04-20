@@ -14,12 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <form role="search" method="get" class="search-form" action="<?php bloginfo( 'url' ); ?>">
 
-	<div class="fields row">
-		<label class="search-field-label columns small-12 medium-8">
+		<label>
 			<span class="screen-reader-text">Search for:</span>
-			<span class="fa fa-search"></span>
 			<input type="search" class="search-field" placeholder="SEARCH" value="" name="s"
 			       title="Search for:">
+			<span class="fa fa-search"></span>
 		</label>
-	</div>
 </form>

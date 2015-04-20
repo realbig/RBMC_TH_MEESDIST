@@ -14,4 +14,14 @@
         }
     });
 
+    // Slick slider
+    $(function () {
+        $('.slick-slider').slick({
+            dots: true,
+            nextArrow: false,
+            prevArrow: false,
+            autoplay: true
+        });
+    });
+
 })(jQuery);

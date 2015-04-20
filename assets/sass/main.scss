@@ -8,6 +8,9 @@ Version: 0.1.0
 
 // Vendor
 @import "../vendor/css/normalize";
+@import "../vendor/css/franklin-gothic";
+@import "../vendor/css/wisdom-sript";
+@import "../vendor/css/din-condensed";
 
 // Deps
 @import "settings.scss";
@@ -17,6 +20,7 @@ Version: 0.1.0
 @import "../vendor/sass/foundation/components/visibility";
 @import "../vendor/sass/foundation/components/clearing";
 @import "../vendor/sass/foundation/components/grid";
+@import "../vendor/sass/foundation/components/block-grid";
 @import "../vendor/sass/foundation/components/buttons";
 @import "../vendor/sass/foundation/components/type";
 @import "../vendor/sass/foundation/components/forms";
@@ -32,6 +36,11 @@ Version: 0.1.0
 @import "templates/single-post";
 @import "templates/page";
 @import "templates/common";
+
+// Partials
+@import "partials/searchform";
+@import "partials/slick";
+@import "partials/wp-gallery";
 
 // Shortcodes
 @import "shortcodes/social";
