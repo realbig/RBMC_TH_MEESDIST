@@ -1,0 +1,40 @@
+/*!
+Theme Name: MeesDist
+Description: The theme for Mees Distribution. Built by Real Big Marketing.
+Author: Real Big Marketing
+Author URI: http://realbigmarketing.com
+Version: 0.1.0
+*/
+
+// Vendor
+@import "../vendor/css/normalize";
+
+// Deps
+@import "settings.scss";
+
+// Foundation
+// Here we control all of the various foundation components to use
+@import "../vendor/sass/foundation/components/visibility";
+@import "../vendor/sass/foundation/components/clearing";
+@import "../vendor/sass/foundation/components/grid";
+@import "../vendor/sass/foundation/components/buttons";
+@import "../vendor/sass/foundation/components/type";
+@import "../vendor/sass/foundation/components/forms";
+
+// Setup
+@import "base";
+
+// Static
+@import "static/header";
+@import "static/footer";
+
+// Templates
+@import "templates/single-post";
+@import "templates/page";
+@import "templates/common";
+
+// Shortcodes
+@import "shortcodes/social";
+
+// Overrides
+@import "wp";

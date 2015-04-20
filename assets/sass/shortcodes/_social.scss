@@ -1,0 +1,51 @@
+/*
+Social shortcodes.
+
+@since 0.1.0
+*/
+
+@import "../settings";
+
+$social-icon-small-base: 1.1em;
+$social-icon-medium-base: 1.6em;
+$social-icon-large-base: 3em;
+
+[class*="social-icon-"] {
+  display: inline-block;
+  padding: 0;
+  text-align: center;
+  color: #fff;
+  width: 1.7em;
+  height: 1.7em;
+  line-height: 1.7em;
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+
+  &[class*="small"] {
+    font-size: $social-icon-small-base;
+  }
+
+  &[class*="medium"] {
+    font-size: $social-icon-medium-base;
+  }
+
+  &[class*="large"] {
+    font-size: $social-icon-large-base;
+  }
+
+  &[class*="facebook"] {
+    background: #3B579D;
+  }
+
+  &[class*="twitter"] {
+    background: #2AA9E0;
+  }
+
+  &[class*="googleplus"] {
+    background: #DC4A38;
+  }
+
+  &[class*="youtube"] {
+    background: #DD2C28;
+  }
+}

@@ -1,0 +1,33 @@
+/*
+The static site header.
+
+@since 0.1.0
+*/
+
+@import "../settings";
+
+#site-header {
+  height: $header-height;
+  line-height: $header-height;
+
+  * {
+    height: inherit;
+    line-height: inherit;
+    color: inherit;
+  }
+
+  background: $primary-color;
+  color: $light-color;
+
+  .top-nav {
+    float: left;
+
+    .top-nav-item {
+      display: inline-block;
+    }
+  }
+
+  .search-form {
+    float: left;
+  }
+}
