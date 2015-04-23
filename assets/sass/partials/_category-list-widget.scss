@@ -1,0 +1,40 @@
+/*
+Category list widget.
+
+@since 0.1.0
+*/
+@import "../settings";
+
+#site-content {
+  ul.product-categories, ul.custom-taxonomy-terms-list {
+    margin-left: 0;
+    list-style: none;
+    text-transform: uppercase;
+
+    a {
+      color: inherit;
+    }
+
+    // Top level
+    > li {
+      margin-bottom: 0.5em;
+
+      > a {
+        display: block;
+        padding: 0.1em 0.5em;
+        border: 1px solid $body-font-color;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+      }
+    }
+
+    li a {
+      padding-left: 0.5em;
+    }
+
+    ul {
+      margin-left: 0;
+      list-style: none;
+    }
+  }
+}

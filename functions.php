@@ -291,6 +291,7 @@ require_once __DIR__ . '/includes/shortcodes/timeline.php';
 // Include widgets
 require_once __DIR__ . '/includes/widgets/text-icon.php';
 require_once __DIR__ . '/includes/widgets/newsletter-signup.php';
+require_once __DIR__ . '/includes/widgets/custom-taxonomy-list.php';
 
 // Overrides
 require_once __DIR__ . '/includes/overrides/woocommerce.php';

@@ -37,7 +37,7 @@ add_action( 'woocommerce_single_product_summary', '_meedist_wc_add_sku' );
 
 function _meesdist_wc_page_start() {
 
-	if ( is_post_type_archive( 'product' ) ) : ?>
+	if ( ! is_single() && get_post_type() == 'product' ) : ?>
 		<div class="woocommerce-actions row collapse">
 			<div class="columns small-12">
 				<?php woocommerce_pagination(); ?>

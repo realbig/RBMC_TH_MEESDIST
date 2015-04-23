@@ -25,45 +25,4 @@ body.single-product.woocommerce-page {
     font-weight: bold;
     font-size: 1.2em;
   }
-
-  .related.products {
-    position: relative;
-    border-top: 1px solid $primary-color;
-    border-bottom: 1px solid $primary-color;
-
-    h2 {
-      position: absolute;
-      top: -1em;
-      left: 1em;
-      display: inline-block;
-      padding: 0 0.1em;
-      background-color: $body-bg;
-      font-family: $header-font-family;
-    }
-
-    ul.products {
-      @extend .small-block-grid-2;
-      @extend .medium-block-grid-4;
-      padding-left: $column-gutter;
-      padding-right: $column-gutter;
-      padding-top: $block-grid-default-spacing;
-      margin-bottom: 0;
-      margin-left: 0 !important;
-
-      li.product {
-        padding: 0 ($block-grid-default-spacing/2) $block-grid-default-spacing;
-        margin: 0;
-        text-align: center;
-
-        // Product title
-        h3 {
-          margin: 0;
-          color: $body-font-color;
-          text-transform: uppercase;
-          font-weight: bold;
-          font-size: 1em;
-        }
-      }
-    }
-  }
 }

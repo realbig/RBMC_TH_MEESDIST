@@ -6,7 +6,7 @@ Catalog page.
 
 @import "../settings";
 
-body.post-type-archive-product {
+body.post-type-archive-product, body.tax-product_cat {
 
   #site-content {
     border-bottom: 1px solid $primary-color;

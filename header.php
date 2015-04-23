@@ -93,13 +93,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</div>
 
 			<div class="site-logo text-center">
-				<div class="container">
-					<a href="<?php bloginfo( 'url' ); ?>">
-						<h1 class="site-title"><?php bloginfo( 'title' ); ?></h1>
-
-						<p class="site-description"><?php bloginfo( 'description' ); ?></p>
-					</a>
-				</div>
+				<a href="<?php bloginfo( 'url' ); ?>">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="mees distributors inc" />
+				</a>
 			</div>
 
 			<nav class="site-nav row show-for-medium-up">
