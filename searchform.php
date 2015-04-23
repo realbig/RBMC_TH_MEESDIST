@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<label>
 			<span class="screen-reader-text">Search for:</span>
-			<input type="search" class="search-field" placeholder="SEARCH" value="" name="s"
+			<input type="search" class="search-field" placeholder="SEARCH" value="<?php the_search_query(); ?>" name="s"
 			       title="Search for:">
 			<span class="fa fa-search"></span>
 		</label>

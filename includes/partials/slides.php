@@ -14,6 +14,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 $slides = get_posts( array(
 	'post_type'   => 'slide',
 	'numberposts' => - 1,
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'slide_location',
+			'field' => 'slug',
+			'terms' => isset( $slide_location ) ? $slide_location : '',
+			'include_children' => false
+		),
+	),
 ) );
 
 global $post;

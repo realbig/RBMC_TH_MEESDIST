@@ -32,20 +32,4 @@ $social-icon-large-base: 3em;
   &[class*="large"] {
     font-size: $social-icon-large-base;
   }
-
-  &[class*="facebook"] {
-    background: #3B579D;
-  }
-
-  &[class*="twitter"] {
-    background: #2AA9E0;
-  }
-
-  &[class*="googleplus"] {
-    background: #DC4A38;
-  }
-
-  &[class*="youtube"] {
-    background: #DD2C28;
-  }
 }

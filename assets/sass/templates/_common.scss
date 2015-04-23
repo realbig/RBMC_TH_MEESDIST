@@ -5,3 +5,42 @@ Styles shared among all templates.
 */
 
 @import "../settings";
+
+#site-content {
+  margin-bottom: $column-gutter;
+
+  ul {
+    margin-left: 3em;
+    list-style: disc;
+  }
+}
+
+.page-title {
+  position: relative;
+  top: -0.6em;
+  text-align: center;
+  border-bottom: 1px solid $primary-color;
+  margin-top: $column-gutter !important;
+  margin-bottom: $column-gutter !important;
+
+  @media #{$small-only} {
+    margin-top: 0 !important;
+  }
+
+  .text {
+    position: relative;
+    bottom: -0.6em;
+    display: inline-block;
+    background-color: $body-bg;
+  }
+}
+
+.section-title {
+  background: $primary-color;
+  color: light-or-dark($primary-color);
+  text-align: center;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: $font-family-sans-serif;
+}

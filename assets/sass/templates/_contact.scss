@@ -1,0 +1,15 @@
+/*
+Contact us template.
+
+@since 0.1.0
+*/
+
+@import "../settings";
+
+body.page-template-contact {
+  .location-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+}

@@ -31,6 +31,8 @@ $body-font-color: #222;
 $base-font-size: 14px;
 $rem-base: $base-font-size;
 
+$hr-border-color: $body-font-color;
+
 // Sizes
 $gutter: 30px;
 $column-gutter: rem-calc(30);
@@ -43,6 +45,14 @@ $header-font-color: $primary-color;
 $header-line-height: 1.4;
 $header-top-margin: .2rem;
 $header-bottom-margin: .5rem;
+
+// We use these to control header size reduction on small screens
+$h1-font-reduction: rem-calc(10);
+$h2-font-reduction: rem-calc(10);
+$h3-font-reduction: rem-calc(5);
+$h4-font-reduction: rem-calc(5);
+$h5-font-reduction: 0;
+$h6-font-reduction: 0;
 
 // We use these to style anchors
 $anchor-text-decoration: none;
@@ -80,14 +90,4 @@ $xlarge-only: "#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max
 $xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})";
 $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})";
 
-/*
- * Mixins
- */
-
-@mixin clearfix {
-  &:after {
-    content: ' ';
-    display: table;
-    clear: both;
-  }
-}
+@import "functions";

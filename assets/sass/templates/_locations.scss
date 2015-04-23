@@ -1,0 +1,53 @@
+/*
+Locations archive.
+
+@since 0.1.0
+*/
+
+@import "../settings";
+
+body.post-type-archive-location {
+
+  .showroom {
+    .location-thumbnail {
+      position: relative;
+
+      .location-title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: $primary-color;
+        color: $light-color;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1em;
+        margin: 0;
+      }
+    }
+  }
+
+  .stone-fabrication-center {
+    .location-title {
+      text-transform: uppercase;
+      font-size: 1.4em;
+      font-weight: bold;
+    }
+  }
+
+  .stone-fabrication-centers-title {
+    background: $primary-color;
+    color: $light-color;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+  .hours {
+    p {
+      margin-top: 0;
+    }
+  }
+}

@@ -8,18 +8,10 @@ WP Gallery styles.
 @import "../../vendor/sass/foundation/components/block-grid";
 
 .gallery {
-  &.gallery-columns-2 {
-    @include block-grid(2);
-  }
-
-  &.gallery-columns-3 {
-    @include block-grid(3);
-  }
-
   .gallery-item {
     position: relative;
 
-    .gallery-caption {
+    .gallery-title {
       position: absolute;
       top: 0;
       left: $block-grid-default-spacing / 2;
@@ -29,6 +21,14 @@ WP Gallery styles.
       text-transform: uppercase;
       text-align: center;
       font-size: 1.4em;
+      margin: 0;
+    }
+
+    .gallery-description {
+        @media #{$small-only} {
+          padding-left: 1em;
+          padding-right: 1em;
+        }
     }
   }
 }

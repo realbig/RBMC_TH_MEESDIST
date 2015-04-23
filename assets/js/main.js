@@ -15,13 +15,14 @@
     });
 
     // Slick slider
-    $(function () {
-        $('.slick-slider').slick({
-            dots: true,
-            nextArrow: false,
-            prevArrow: false,
-            autoplay: true
+    if ($().slick) {
+        $(function () {
+            $('.slick-slider').slick({
+                dots: true,
+                nextArrow: false,
+                prevArrow: false,
+                autoplay: true
+            });
         });
-    });
-
+    }
 })(jQuery);

@@ -1,0 +1,15 @@
+/*
+Featured project template.
+
+@since 0.1.0
+*/
+
+@import "../settings";
+
+body.page-template-new-arrivals {
+
+  .product-list {
+    padding-left: $column-gutter;
+    padding-right: $column-gutter;
+  }
+}

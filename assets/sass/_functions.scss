@@ -1,0 +1,14 @@
+/*
+Extra functions.
+
+@since 0.1.0
+*/
+
+@function light-or-dark($color) {
+
+  @if lightness($color) < 50% {
+    @return $light-color;
+  } @else {
+    @return $dark-color;
+  }
+}

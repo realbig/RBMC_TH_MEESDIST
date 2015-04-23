@@ -1,0 +1,74 @@
+/*
+Blog index.
+
+@since 0.1.0
+*/
+
+@import "../settings";
+@import "../../vendor/sass/foundation/components/buttons";
+
+body.blog {
+  .post-title {
+    background-color: $primary-color;
+    color: light-or-dark($primary-color);
+    font-family: $font-family-sans-serif;
+    text-transform: uppercase;
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 0.1em 0.5em;
+
+    &:hover {
+      background-color: $button-bg-hover;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .post-date {
+      float: right;
+    }
+  }
+
+  .read-more-link {
+    text-transform: uppercase;
+    color: $body-font-color;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  .post {
+    border-bottom: 1px solid $body-font-color;
+    padding-bottom: $column-gutter;
+    margin-bottom: $column-gutter;
+  }
+
+  .post-thumbnail {
+    img {
+      width: 100%;
+    }
+  }
+
+  .navigation.pagination {
+    @include clearfix;
+    text-align: center;
+
+    .page-numbers {
+      text-transform: uppercase;
+      font-weight: bold;
+      color: $body-font-color;
+
+      &.next {
+        float: right;
+      }
+
+      &.prev {
+        float: left;
+      }
+
+      &.current {
+        font-weight: bold;
+      }
+    }
+  }
+}

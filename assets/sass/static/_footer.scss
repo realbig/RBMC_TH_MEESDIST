@@ -7,4 +7,49 @@ The static site footer.
 @import "../settings";
 
 #site-footer {
+  background-color: $primary-color;
+  color: light-or-dark($primary-color);
+  padding: $column-gutter 1em;
+  font-size: 1em;
+
+  @media #{$medium-up} {
+    font-size: 0.7em;
+    padding-left: $column-gutter 0;
+  }
+
+  p {
+    font-size: inherit;
+  }
+
+  a {
+    color: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  > .row {
+    border-bottom: 1px solid #fff;
+  }
+
+  .footer-widget {
+    .marble-institute {
+      max-width: 70%;
+      float: left;
+    }
+
+    .ctda {
+      max-width: 18.7%;
+      margin-left: 5px;
+      float: left;
+    }
+  }
+
+  h3 {
+    text-transform: uppercase;
+    color: inherit;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
 }

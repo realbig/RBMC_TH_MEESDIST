@@ -1,0 +1,17 @@
+/*
+Search results.
+
+@since 0.1.0
+*/
+
+@import "../settings";
+
+body.search {
+  .search-results-title {
+    @extend h2;
+
+    .search-query {
+      font-weight: bold;
+    }
+  }
+}

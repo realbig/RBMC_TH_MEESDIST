@@ -12,11 +12,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 add_action( 'init', function () {
+
 	easy_register_post_type( 'location', 'Location', 'Locations', array(
 		'menu_icon' => 'dashicons-location',
-		'supports'  => array( 'title', '' ),
+		'supports'  => array( 'title', 'thumbnail' ),
 		'rewrite'   => array( 'slug' => 'locations' ),
 	) );
+
+	// Category taxonomy
+	register_taxonomy(
+		'location_type',
+		'location',
+		array(
+			'labels'        => array(
+				'name'          => 'Location Type',
+				'add_new_item'  => 'Add New Location Type',
+				'new_item_name' => "New Location Type"
+			),
+			'show_admin_column' => true,
+			'show_ui'       => true,
+			'show_tagcloud' => false,
+			'hierarchical'  => true,
+		)
+	);
 } );
 
 add_action( 'add_meta_boxes', function () {
@@ -50,43 +68,53 @@ function _meesdist_metabox_location_info( $post ) {
 	?>
 		<p>
 		<label>
-			Address (line 1)
+			Address (line 1)<br/>
 			<input type="text" name="_address_line_1" value="<?php echo esc_attr( $address_line_1 ); ?>" />
 		</label>
 	</p>
 
 	<p>
 		<label>
-			Address (line 2)
+			Address (line 2)<br/>
 			<input type="text" name="_address_line_2" value="<?php echo esc_attr( $address_line_2 ); ?>" />
 		</label>
 	</p>
 
 	<p>
 		<label>
-			Phone
+			Phone<br/>
 			<input type="text" name="_phone" value="<?php echo esc_attr( $phone ); ?>" />
 		</label>
 	</p>
 
 	<p>
 		<label>
-			Fax
+			Fax<br/>
 			<input type="text" name="_fax" value="<?php echo esc_attr( $fax ); ?>" />
 		</label>
 	</p>
 
 	<p>
 		<label>
-			Email
+			Email<br/>
 			<input type="text" name="_email" value="<?php echo esc_attr( $email ); ?>" />
 		</label>
 	</p>
 
 	<p>
 		<label>
-			Hours
-			<input type="text" name="_hours" value="<?php echo esc_attr( $hours ); ?>" />
+			Hours<br/>
+
+			<div style="width: 400px; max-width: 100%;">
+				<?php
+				wp_editor( $hours, '_hours', array(
+					'textarea_name' => '_hours',
+					'textarea_rows' => 4,
+					'teeny'         => true,
+					'media_buttons' => false,
+				) );
+				?>
+			</div>
 		</label>
 	</p>
 <?php

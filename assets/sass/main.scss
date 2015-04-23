@@ -13,6 +13,7 @@ Version: 0.1.0
 @import "../vendor/css/din-condensed";
 
 // Deps
+@import "functions.scss";
 @import "settings.scss";
 
 // Foundation
@@ -24,18 +25,30 @@ Version: 0.1.0
 @import "../vendor/sass/foundation/components/buttons";
 @import "../vendor/sass/foundation/components/type";
 @import "../vendor/sass/foundation/components/forms";
+@import "../vendor/sass/foundation/components/offcanvas";
 
 // Setup
 @import "base";
 
 // Static
 @import "static/header";
+@import "static/offcanvas";
 @import "static/footer";
 
 // Templates
 @import "templates/single-post";
 @import "templates/page";
 @import "templates/common";
+@import "templates/home";
+@import "templates/blog";
+@import "templates/locations";
+@import "templates/featured-project";
+@import "templates/new-arrivals";
+@import "templates/catalog";
+@import "templates/single-product";
+@import "templates/gallery";
+@import "templates/contact";
+@import "templates/search";
 
 // Partials
 @import "partials/searchform";
@@ -44,6 +57,7 @@ Version: 0.1.0
 
 // Shortcodes
 @import "shortcodes/social";
+@import "shortcodes/timeline";
 
 // Overrides
 @import "wp";

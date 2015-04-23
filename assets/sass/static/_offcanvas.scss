@@ -1,0 +1,19 @@
+/*
+The static site footer.
+
+@since 0.1.0
+*/
+
+@import "../settings";
+
+.left-off-canvas-menu {
+  background-color: $primary-color;
+  color: light-or-dark($primary-color);
+  text-transform: uppercase;
+
+  a {
+    color: inherit;
+    padding-left: 0.5em;
+    font-size: 1.5em;
+  }
+}

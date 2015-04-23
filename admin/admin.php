@@ -15,7 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once __DIR__ . '/post-types/slide.php';
 require_once __DIR__ . '/post-types/gallery-item.php';
 require_once __DIR__ . '/post-types/location.php';
-require_once __DIR__ . '/post-types/featured-project.php';
+require_once __DIR__ . '/extra-meta/gallery.php';
+require_once __DIR__ . '/extra-meta/featured-projects.php';
+require_once __DIR__ . '/extra-meta/contact.php';
 
 /**
  * Easy way to register a new post type!

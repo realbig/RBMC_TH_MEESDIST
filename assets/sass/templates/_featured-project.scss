@@ -1,0 +1,44 @@
+/*
+Featured project template.
+
+@since 0.1.0
+*/
+
+@import "../settings";
+
+body.page-template-featured-project {
+  .featured-project-materials-used {
+    position: relative;
+    margin-top: $column-gutter;
+    margin-bottom: $column-gutter;
+    border-bottom: 1px solid $primary-color;
+    border-top: 1px solid $primary-color;
+  }
+
+  .materials-used-title {
+    position: absolute;
+    top: -1em;
+    left: 1em;
+    display: inline-block;
+    padding: 0 0.1em;
+    background-color: $body-bg;
+  }
+
+  .materials-used-list {
+    padding-left: $column-gutter;
+    padding-right: $column-gutter;
+
+    li {
+      padding-top: $block-grid-default-spacing;
+      text-align: center;
+
+      .material-used-title {
+        margin: 0;
+        color: $body-font-color;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 1em;
+      }
+    }
+  }
+}

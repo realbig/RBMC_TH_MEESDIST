@@ -31,6 +31,23 @@ define( 'THEME_VERSION', '0.1.0' );
  */
 define( 'THEME_ID', 'my_theme' );
 
+// Extra image sizes
+global $meesdist_image_sizes;
+$meesdist_image_sizes = array(
+	'slide' => array(
+		'title' => 'Slide',
+		'width' => 1000,
+		'height' => 500,
+		'crop' => array( 'center', 'center' ),
+	),
+	'gallery' => array(
+		'title' => 'Gallery',
+		'width' => 500,
+		'height' => 500,
+		'crop' => array( 'center', 'center' ),
+	)
+);
+
 /**
  * Setup theme properties and stuff.
  *
@@ -38,12 +55,20 @@ define( 'THEME_ID', 'my_theme' );
  */
 add_action( 'after_setup_theme', function () {
 
+	global $meesdist_image_sizes;
+
 	// Add theme support
 	require_once __DIR__ . '/includes/theme-support.php';
 
 	// Image sizes
-	add_image_size( 'slide', 1000, 500, array( 'center', 'center' ) );
-	add_image_size( 'gallery-image', 500, 500, array( 'center', 'center' ) );
+	if ( ! empty( $meesdist_image_sizes ) ) {
+
+		foreach ( $meesdist_image_sizes as $ID => $size ) {
+			add_image_size( $ID, $size['width'], $size['height'], $size['crop'] );
+		}
+
+		add_filter( 'image_size_names_choose', '_meesdist_add_image_sizes' );
+	}
 
 	// Don't use gallery style
 	add_filter( 'use_default_gallery_style', '__return_false' );
@@ -51,6 +76,27 @@ add_action( 'after_setup_theme', function () {
 	// Allow shortcodes in text widget
 	add_filter( 'widget_text', 'do_shortcode' );
 } );
+
+/**
+ * Adds support for custom image sizes.
+ *
+ * @since 0.1.0
+ *
+ * @param $sizes array The existing image sizes.
+ *
+ * @return array The new image sizes.
+ */
+function _meesdist_add_image_sizes( $sizes ) {
+
+	global $meesdist_image_sizes;
+
+	$new_sizes = array();
+ 	foreach ( $meesdist_image_sizes as $ID => $size ) {
+	    $new_sizes[ $ID ] = $size['title'];
+	}
+
+	return array_merge( $sizes, $new_sizes );
+}
 
 /**
  * Register theme files.
@@ -76,6 +122,15 @@ add_action( 'init', function () {
 		true
 	);
 
+	// Admin script
+	wp_register_script(
+		THEME_ID . '-admin',
+		get_template_directory_uri() . '/admin.js',
+		array( 'jquery', THEME_ID . '-chosen' ),
+		defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : THEME_VERSION,
+		true
+	);
+
 	// Font Awesome
 	wp_register_style(
 		THEME_ID . '-font-awesome',
@@ -97,6 +152,20 @@ add_action( 'init', function () {
 		array( 'jquery' ),
 		defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : '1.5.0'
 	);
+
+	// Chosen
+	wp_register_style(
+		THEME_ID . '-chosen',
+		get_template_directory_uri() . '/assets/vendor/css/chosen.min.css',
+		array(),
+		defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : '1.4.2'
+	);
+	wp_register_script(
+		THEME_ID . '-chosen',
+		get_template_directory_uri() . '/assets/vendor/js/nomin/chosen.jquery.min.js',
+		array( 'jquery' ),
+		defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : '1.4.2'
+	);
 } );
 
 /**
@@ -116,10 +185,21 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style( THEME_ID . '-font-awesome' );
 
 	// Slick slider
-	if ( is_front_page() ) {
+	if ( is_front_page() || is_page_template( 'page-templates/featured-project.php' ) ) {
 		wp_enqueue_style( THEME_ID . '-slick' );
 		wp_enqueue_script( THEME_ID . '-slick' );
 	}
+} );
+
+/**
+ * Enqueue admin files.
+ *
+ * @since 0.1.0
+ */
+add_action( 'admin_enqueue_scripts', function () {
+
+	// Admin script
+	wp_enqueue_script( THEME_ID . '-admin' );
 } );
 
 /**
@@ -147,11 +227,40 @@ add_action( 'widgets_init', function () {
 		'after_widget'  => '',
 	) );
 
-	// Home
+	// Home (left)
 	register_sidebar( array(
-		'name'        => 'Home',
-		'id'          => 'home',
-		'description' => 'Shows under the Home Page content.',
+		'name'        => 'Home Left',
+		'id'          => 'home-left',
+		'description' => 'Shows under the Home Page content on the left.',
+		'before_widget' => '',
+		'after_widget' => '',
+	) );
+
+	// Home (right)
+	register_sidebar( array(
+		'name'        => 'Home Right',
+		'id'          => 'home-right',
+		'description' => 'Shows under the Home Page content on the right.',
+		'before_widget' => '',
+		'after_widget' => '',
+	) );
+
+	// Catalog
+	register_sidebar( array(
+		'name'        => 'Catalog',
+		'id'          => 'catalog',
+		'description' => 'Shows on the catalog page.',
+		'before_widget' => '',
+		'after_widget' => '',
+	) );
+
+	// Gallery
+	register_sidebar( array(
+		'name'        => 'Gallery',
+		'id'          => 'gallery',
+		'description' => 'Shows on the gallery page.',
+		'before_widget' => '',
+		'after_widget' => '',
 	) );
 
 	// Footer
@@ -159,154 +268,29 @@ add_action( 'widgets_init', function () {
 		'name'        => 'Footer',
 		'id'          => 'footer',
 		'description' => 'Shows on left side of the site\'s footer.',
+		'before_widget' => '',
+		'after_widget' => '',
 	) );
 } );
 
-add_filter( 'post_gallery', '_meesdist_gallery_output', 10, 2 );
+// Theme specific functions
+require_once __DIR__ . '/includes/theme-functions.php';
 
-function _meesdist_gallery_output( $output, $attr ) {
-
-	$post = get_post();
-
-	static $instance = 0;
-	$instance++;
-
-	if ( ! empty( $attr['ids'] ) ) {
-		// 'ids' is explicitly ordered, unless you specify otherwise.
-		if ( empty( $attr['orderby'] ) ) {
-			$attr['orderby'] = 'post__in';
-		}
-		$attr['include'] = $attr['ids'];
-	}
-
-	$html5 = current_theme_supports( 'html5', 'gallery' );
-	$atts = shortcode_atts( array(
-		'order'      => 'ASC',
-		'orderby'    => 'menu_order ID',
-		'id'         => $post ? $post->ID : 0,
-		'itemtag'    => $html5 ? 'figure'     : 'dl',
-		'icontag'    => $html5 ? 'div'        : 'dt',
-		'captiontag' => $html5 ? 'figcaption' : 'dd',
-		'columns'    => 3,
-		'size'       => 'thumbnail',
-		'include'    => '',
-		'exclude'    => '',
-		'link'       => ''
-	), $attr, 'gallery' );
-
-	$id = intval( $atts['id'] );
-
-	if ( ! empty( $atts['include'] ) ) {
-		$_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
-
-		$attachments = array();
-		foreach ( $_attachments as $key => $val ) {
-			$attachments[$val->ID] = $_attachments[$key];
-		}
-	} elseif ( ! empty( $atts['exclude'] ) ) {
-		$attachments = get_children( array( 'post_parent' => $id, 'exclude' => $atts['exclude'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
-	} else {
-		$attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
-	}
-
-	if ( empty( $attachments ) ) {
-		return '';
-	}
-
-	if ( is_feed() ) {
-		$output = "\n";
-		foreach ( $attachments as $att_id => $attachment ) {
-			$output .= wp_get_attachment_link( $att_id, $atts['size'], true ) . "\n";
-		}
-		return $output;
-	}
-
-	$itemtag = tag_escape( $atts['itemtag'] );
-	$captiontag = tag_escape( $atts['captiontag'] );
-	$icontag = tag_escape( $atts['icontag'] );
-	$valid_tags = wp_kses_allowed_html( 'post' );
-	if ( ! isset( $valid_tags[ $itemtag ] ) ) {
-		$itemtag = 'dl';
-	}
-	if ( ! isset( $valid_tags[ $captiontag ] ) ) {
-		$captiontag = 'dd';
-	}
-	if ( ! isset( $valid_tags[ $icontag ] ) ) {
-		$icontag = 'dt';
-	}
-
-	$columns = intval( $atts['columns'] );
-	$itemwidth = $columns > 0 ? floor(100/$columns) : 100;
-	$float = is_rtl() ? 'right' : 'left';
-
-	$selector = "gallery-{$instance}";
-
-	$gallery_style = '';
-	$size_class = sanitize_html_class( $atts['size'] );
-	$gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-
-	/**
-	 * Filter the default gallery shortcode CSS styles.
-	 *
-	 * @since 2.5.0
-	 *
-	 * @param string $gallery_style Default CSS styles and opening HTML div container
-	 *                              for the gallery shortcode output.
-	 */
-	$output = apply_filters( 'gallery_style', $gallery_style . $gallery_div );
-
-	$i = 0;
-	foreach ( $attachments as $id => $attachment ) {
-
-		$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
-		if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
-			$image_output = wp_get_attachment_link( $id, $atts['size'], false, false, false, $attr );
-		} elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
-			$image_output = wp_get_attachment_image( $id, $atts['size'], false, $attr );
-		} else {
-			$image_output = wp_get_attachment_link( $id, $atts['size'], true, false, false, $attr );
-		}
-		$image_meta  = wp_get_attachment_metadata( $id );
-
-		$orientation = '';
-		if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
-			$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
-		}
-		$output .= "<{$itemtag} class='gallery-item'>";
-		$output .= "
-			<{$icontag} class='gallery-icon {$orientation}'>
-				$image_output
-			</{$icontag}>";
-		if ( $captiontag && trim($attachment->post_excerpt) ) {
-			$output .= "
-				<{$captiontag} class='wp-caption-text gallery-caption' id='$selector-$id'>
-				" . wptexturize($attachment->post_excerpt) . "
-				</{$captiontag}>";
-		}
-		$output .= "</{$itemtag}>";
-		if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
-			$output .= '<br style="clear: both" />';
-		}
-	}
-
-	if ( ! $html5 && $columns > 0 && $i % $columns !== 0 ) {
-		$output .= "
-			<br style='clear: both' />";
-	}
-
-	$output .= "
-		</div>\n";
-
-	return $output;
-}
-
+// Admin
 require_once __DIR__ . '/admin/admin.php';
 
 // Include shortcodes
 require_once __DIR__ . '/includes/shortcodes/social.php';
 require_once __DIR__ . '/includes/shortcodes/button.php';
 require_once __DIR__ . '/includes/shortcodes/contact.php';
+require_once __DIR__ . '/includes/shortcodes/image.php';
+require_once __DIR__ . '/includes/shortcodes/style.php';
+require_once __DIR__ . '/includes/shortcodes/clear.php';
+require_once __DIR__ . '/includes/shortcodes/timeline.php';
 
 // Include widgets
-require_once __DIR__ . '/includes/widgets/image.php';
 require_once __DIR__ . '/includes/widgets/text-icon.php';
+require_once __DIR__ . '/includes/widgets/newsletter-signup.php';
+
+// Overrides
+require_once __DIR__ . '/includes/overrides/woocommerce.php';

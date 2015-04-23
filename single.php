@@ -1,6 +1,6 @@
 <?php
 /**
- * The theme's single file use for displaying single posts.
+ * The theme's page file use for displaying pages.
  *
  * @since 0.1.0
  * @package MeesDist
@@ -14,9 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 
 the_post();
-?>
 
-<!-- Single HTML -->
+meesdist_partial( 'post-content' );
 
-<?php
 get_footer();

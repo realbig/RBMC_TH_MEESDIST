@@ -14,9 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 
 the_post();
-?>
 
-<!-- Page HTML -->
+meesdist_partial( 'page-content' );
 
-<?php
 get_footer();

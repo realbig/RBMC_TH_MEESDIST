@@ -17,6 +17,7 @@ Searchform.
   }
 
   input[type="search"] {
+    color: $body-font-color !important;
     padding-left: 25px;
   }
 }

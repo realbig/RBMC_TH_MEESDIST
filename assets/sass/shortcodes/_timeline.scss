@@ -1,0 +1,21 @@
+/*
+Timeline.
+
+@since 0.1.0
+*/
+
+@import "../settings";
+
+#site-content {
+  .timeline-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+
+    .timeline-year {
+      color: $primary-color;
+      font-weight: bold;
+      font-size: 1.4em;
+      margin: 0;
+    }
+  }
+}

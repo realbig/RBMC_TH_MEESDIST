@@ -13,6 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
+add_theme_support( 'woocommerce' );
+
 /**
  * Adds support for the "Featured Image". Pass the second argument to only allow for specified post types.
  */

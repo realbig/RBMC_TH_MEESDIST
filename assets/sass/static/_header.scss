@@ -10,6 +10,8 @@ The static site header.
   .top-nav {
     height: $header-height;
     line-height: $header-height;
+    background: $primary-color;
+    color: $light-color;
 
     * {
       height: inherit;
@@ -19,9 +21,27 @@ The static site header.
       font-size: inherit;
     }
 
-    background: $primary-color;
-    color: $light-color;
-//    font-size: 0.8em;
+    .left {
+      @media #{$small-only} {
+        float: none !important;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+      }
+    }
+
+    .fa-bars {
+      float: left;
+      margin-right: 0.5em;
+    }
+
+    .textwidget {
+      float: right;
+      height: auto;
+
+      [class*="social-icon-"] {
+        width: 1em;
+      }
+    }
 
     .fa {
       font-size: 1.4em;
@@ -55,25 +75,31 @@ The static site header.
   }
 
   .site-logo {
-    margin: $gutter 0;
+    margin: $column-gutter 0;
 
     > .container {
       display: inline-block;
     }
 
     .site-title {
-      font-size: 4em;
       border-bottom: 1px solid $primary-color;
+      margin: 0;
     }
 
     .site-description {
       position: relative;
-      top: -1.5em;
       display: inline-block;
+      margin: 0;
       text-transform: uppercase;
       background: $body-bg;
       color: $primary-color;
-      font-size: 0.9em;
+      font-size: 0.7em;
+      top: -1.1em;
+
+      @media #{$medium-up} {
+        top: -1em;
+        font-size: 0.9em;
+      }
     }
   }
 
@@ -83,12 +109,24 @@ The static site header.
     .menu-item {
       float: left;
       text-align: center;
-      font-size: 1.3em;
+      font-size: 1.2em;
       text-transform: uppercase;
       color: $light-color;
+      font-weight: bold;
+      white-space: nowrap;
+
+      &.current-menu-item {
+        color: $primary-color;
+        text-decoration: underline;
+      }
 
       a {
         color: inherit;
+
+        &:hover {
+          color: $primary-color;
+          text-decoration: underline;
+        }
       }
     }
   }

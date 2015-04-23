@@ -78,6 +78,7 @@ module.exports = function (grunt) {
                         'assets/vendor/js/placeholder.js',
                         'assets/vendor/js/jquery.cookie.js',
                         'assets/vendor/js/foundation/foundation.js',
+                        'assets/vendor/js/foundation/foundation.offcanvas.js',
 
                         // Dynamic files
                         '!assets/vendor/js/nomin/*.js',
