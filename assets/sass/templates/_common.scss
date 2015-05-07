@@ -31,6 +31,8 @@ Styles shared among all templates.
     position: relative;
     bottom: -0.6em;
     display: inline-block;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
     background-color: $body-bg;
   }
 }

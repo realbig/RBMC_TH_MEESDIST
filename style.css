@@ -99,7 +99,7 @@ dfn {
  * Address variable `h1` font-size and margin within `section` and `article`
  * contexts in Firefox 4+, Safari, and Chrome.
  */
-h1 {
+h1, body.page-template-category-archive .material-title {
   font-size: 2em;
   margin: 0.67em 0; }
 
@@ -2639,7 +2639,7 @@ button::-moz-focus-inner {
  }
 
 /* Typography resets */
-div, dl, dt, dd, ul, ol, li, h1, h2, body.search .search-results-title, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+div, dl, dt, dd, ul, ol, li, h1, body.page-template-category-archive .material-title, h2, body.search .search-results-title, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
   margin: 0;
   padding: 0; }
 
@@ -2670,7 +2670,7 @@ p {
     font-style: italic; }
 
 /* Default header styles */
-h1, h2, body.search .search-results-title, h3, h4, h5, h6 {
+h1, body.page-template-category-archive .material-title, h2, body.search .search-results-title, h3, h4, h5, h6 {
   font-family: "Wisdom Script", cursive;
   font-weight: normal;
   font-style: normal;
@@ -2679,12 +2679,12 @@ h1, h2, body.search .search-results-title, h3, h4, h5, h6 {
   margin-top: 0.2rem;
   margin-bottom: 0.5rem;
   line-height: 1.4; }
-  h1 small, h2 small, body.search .search-results-title small, h3 small, h4 small, h5 small, h6 small {
+  h1 small, body.page-template-category-archive .material-title small, h2 small, body.search .search-results-title small, h3 small, h4 small, h5 small, h6 small {
     font-size: 60%;
     color: #2095e6;
     line-height: 0; }
 
-h1 {
+h1, body.page-template-category-archive .material-title {
   font-size: 2.4285714286rem; }
 
 h2, body.search .search-results-title {
@@ -2841,10 +2841,10 @@ blockquote, blockquote p {
   padding: 0 0.0714285714rem; }
 
 @media only screen and (min-width:40.063em) {
-  h1, h2, body.search .search-results-title, h3, h4, h5, h6 {
+  h1, body.page-template-category-archive .material-title, h2, body.search .search-results-title, h3, h4, h5, h6 {
     line-height: 1.4; }
 
-  h1 {
+  h1, body.page-template-category-archive .material-title {
     font-size: 3.1428571429rem; }
 
   h2, body.search .search-results-title {
@@ -3283,12 +3283,12 @@ label.error {
   height: 3.2142857143rem;
   line-height: 3.2142857143rem;
   position: relative; }
-  .tab-bar h1, .tab-bar h2, .tab-bar body.search .search-results-title, body.search .tab-bar .search-results-title, .tab-bar h3, .tab-bar h4, .tab-bar h5, .tab-bar h6 {
+  .tab-bar h1, .tab-bar body.page-template-category-archive .material-title, body.page-template-category-archive .tab-bar .material-title, .tab-bar h2, .tab-bar body.search .search-results-title, body.search .tab-bar .search-results-title, .tab-bar h3, .tab-bar h4, .tab-bar h5, .tab-bar h6 {
     color: #FFFFFF;
     font-weight: bold;
     line-height: 3.2142857143rem;
     margin: 0; }
-  .tab-bar h1, .tab-bar h2, .tab-bar body.search .search-results-title, body.search .tab-bar .search-results-title, .tab-bar h3, .tab-bar h4 {
+  .tab-bar h1, .tab-bar body.page-template-category-archive .material-title, body.page-template-category-archive .tab-bar .material-title, .tab-bar h2, .tab-bar body.search .search-results-title, body.search .tab-bar .search-results-title, .tab-bar h3, .tab-bar h4 {
     font-size: 1.2857142857rem; }
 
 .left-small {
@@ -3922,7 +3922,7 @@ Extra functions.
     margin-left: 3em;
     list-style: disc; }
 
-.page-title {
+.page-title, body.page-template-category-archive .material-title {
   position: relative;
   top: -0.6em;
   text-align: center;
@@ -3930,12 +3930,14 @@ Extra functions.
   margin-top: 2.1428571429rem !important;
   margin-bottom: 2.1428571429rem !important; }
   @media only screen and (max-width: 40em) {
-    .page-title {
+    .page-title, body.page-template-category-archive .material-title {
       margin-top: 0 !important; } }
-  .page-title .text {
+  .page-title .text, body.page-template-category-archive .material-title .text {
     position: relative;
     bottom: -0.6em;
     display: inline-block;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
     background-color: #fff; }
 
 .section-title {
@@ -4173,17 +4175,22 @@ Extra functions.
 */
 body.post-type-archive-product #site-content, body.tax-product_cat #site-content {
   border-bottom: 1px solid #0D4A74; }
-body.post-type-archive-product .page-title, body.tax-product_cat .page-title {
-  text-align: left; }
+body.post-type-archive-product .page-title, body.post-type-archive-product body.page-template-category-archive .material-title, body.page-template-category-archive body.post-type-archive-product .material-title, body.tax-product_cat .page-title, body.tax-product_cat body.page-template-category-archive .material-title, body.page-template-category-archive body.tax-product_cat .material-title {
+  text-align: left;
+  margin-top: 40px !important; }
 body.post-type-archive-product ul.products, body.tax-product_cat ul.products {
   margin-left: 0 !important; }
 body.post-type-archive-product .woocommerce-actions, body.tax-product_cat .woocommerce-actions {
-  position: relative;
+  position: absolute;
   padding-left: 1em;
-  padding-right: 1em; }
+  padding-right: 1em;
+  min-height: 50px;
+  margin-top: 10px;
+  left: 0;
+  right: 0;
+  z-index: 1; }
   @media only screen and (min-width:40.063em) {
     body.post-type-archive-product .woocommerce-actions, body.tax-product_cat .woocommerce-actions {
-      bottom: -4.2857142857rem;
       padding-left: 0;
       padding-right: 0; } }
   @media only screen and (max-width: 40em) {
@@ -4292,6 +4299,32 @@ Extra functions.
 */
 body.search .search-results-title .search-query {
   font-weight: bold; }
+
+/*
+Category archive template.
+
+@since 0.1.0
+*/
+/*
+Sets up the theme's styling properties and makes some variables already set in Foundation available for easy use
+throughout this theme's SASS files.
+
+@since 0.1.0
+*/
+/*
+Extra functions.
+
+@since 0.1.0
+*/
+body.page-template-category-archive .material-list {
+  margin-left: 0 !important;
+  padding-left: 2.1428571429rem;
+  padding-right: 2.1428571429rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold; }
+  body.page-template-category-archive .material-list a {
+    color: inherit; }
 
 /*
 Searchform.
@@ -4423,6 +4456,11 @@ Extra functions.
   #site-content ul.product-categories ul, #site-content ul.custom-taxonomy-terms-list ul {
     margin-left: 0;
     list-style: none; }
+  #site-content ul.product-categories .children, #site-content ul.custom-taxonomy-terms-list .children {
+    font-weight: bold; }
+  #site-content ul.product-categories .children .children, #site-content ul.custom-taxonomy-terms-list .children .children {
+    font-weight: normal;
+    margin-left: 0.5em; }
 
 /*
 Related products.

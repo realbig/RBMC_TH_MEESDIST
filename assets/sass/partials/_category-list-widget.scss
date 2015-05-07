@@ -36,5 +36,16 @@ Category list widget.
       margin-left: 0;
       list-style: none;
     }
+
+    // 2nd level
+    .children {
+      font-weight: bold;
+    }
+
+    // 3rd level
+    .children  .children {
+      font-weight: normal;
+      margin-left: 0.5em;
+    }
   }
 }

@@ -1,0 +1,28 @@
+/*
+Category archive template.
+
+@since 0.1.0
+*/
+
+@import "../settings";
+
+body.page-template-category-archive {
+
+  .material-title {
+    @extend h1;
+    @extend .page-title;
+  }
+
+  .material-list {
+    margin-left: 0 !important;
+    padding-left: $column-gutter;
+    padding-right: $column-gutter;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    a {
+      color: inherit;
+    }
+  }
+}

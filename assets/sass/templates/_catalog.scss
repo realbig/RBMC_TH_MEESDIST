@@ -14,6 +14,7 @@ body.post-type-archive-product, body.tax-product_cat {
 
   .page-title {
     text-align: left;
+    margin-top: 40px !important;
   }
 
   ul.products {
@@ -21,12 +22,17 @@ body.post-type-archive-product, body.tax-product_cat {
   }
 
   .woocommerce-actions {
-    position: relative;
+    position: absolute;
     padding-left: 1em;
     padding-right: 1em;
+    min-height: 50px;
+    margin-top: 10px;
+    left: 0;
+    right: 0;
+    z-index: 1;
 
     @media #{$medium-up} {
-      bottom: -$column-gutter * 2;
+//      bottom: -$column-gutter * 2;
       padding-left: 0;
       padding-right: 0;
     }
