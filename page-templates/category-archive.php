@@ -50,10 +50,10 @@ $material_types = get_terms( 'product_cat', array(
 							$thumbnail_id = get_woocommerce_term_meta( $material->term_id, 'thumbnail_id', true );
 							$image = wp_get_attachment_image( $thumbnail_id, 'gallery' );
 							if ( $image ) {
-								echo '<a href="' . get_term_link( $material ) . '">';
+								echo $material->count > 0 ? '<a href="' . get_term_link( $material ) . '">' : '';
 								echo $image . '<br/>';
 								echo $material->name;
-								echo '</a>';
+								echo $material->count > 0 ? '</a>' : '';
 							}
 							?>
 						</li>

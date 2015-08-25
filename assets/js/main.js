@@ -25,4 +25,24 @@
             });
         });
     }
+
+    // Hide link for empty cats
+    $('ul.product-categories').find('li').each(function () {
+
+        var $count = $(this).find('span.count'),
+            count;
+
+        if ($count.html()) {
+            count = parseInt($count.html().match(/\d/));
+        }
+
+        $count.remove();
+
+        if (count === 0) {
+            $(this).find('a').click(function (event) {
+                event.preventDefault();
+                return false;
+            });
+        }
+    });
 })(jQuery);
